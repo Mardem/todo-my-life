@@ -1,0 +1,34 @@
+extends ../../layouts/main
+
+block content
+    .container
+        .row.mt-5
+            .col-sm-6
+                table.table
+                    thead
+                        tr
+                            th #
+                            th Nome
+                            th Descrição
+                            th Ações
+                    tbody
+                    - let n = 0
+                    while n < 4
+                        tr
+                            td= n++
+                            td Cortar cabelo
+                            td Devo cortar cabelo no salão perto de casa
+                            td
+                                a.btn.btn-danger.btn-sm.text-white Apagar
+                                a.btn.btn-primary.btn-sm.btn-block.mt-1.text-white Ver
+
+            .col-sm-6
+                .card
+                    .card-header.bg-primary.text-white  Nova tarefa
+                    .card-body
+                        form(action='/todo/save', method='POST')
+                            input(class='form-control', placeholder='Título da task', name='title')
+                            textarea(class='form-control mt-1', placeholder='Digite uma descrição', name='description')
+                            button(class='btn btn-success btn-sm mt-1', ) Enviar
+
+
