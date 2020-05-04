@@ -18,6 +18,31 @@ router.get('/:id', async (req, res, next) => {
     })
 });
 
+router.get('/delete/:id', async (req, res, next) => {
+    Todo.destroy({
+        where: {
+            id: req.params.id
+        }
+    }).then(() => {
+            res.redirect('/todo')
+        }).catch(() => {
+        console.log('Não conseguiu apagar a todo')
+    })
+});
+
+router.post('/update/:id', (req, res, next) => {
+    Todo.update(req.body, {
+        where: {
+            id: req.params.id
+        }
+    }).then(() => {
+        res.redirect('/todo')
+    }).catch(err => {
+        console.log('Ocorreu um erro ao atualizar um todo');
+        console.error(err)
+    });
+});
+
 router.post('/save', (req, res, next) => {
     Todo.create({
         title: req.body.title,

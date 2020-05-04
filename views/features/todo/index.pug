@@ -19,7 +19,7 @@ block content
                             td= todo.description
                             td
                                 a(class='btn btn-primary btn-sm btn-block mt-1 text-white', href='/todo/' + todo.id) Ver
-                                a.btn.btn-danger.btn-sm.btn-block.text-white Apagar
+                                a.btn.btn-danger.btn-sm.btn-block.text-white(href='/todo/delete/' + todo.id) Apagar
 
             .col-sm-6
                 .card
