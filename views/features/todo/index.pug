@@ -12,23 +12,23 @@ block content
                             th Descrição
                             th Ações
                     tbody
-                    - let n = 0
-                    while n < 4
+                    each todo in todos
                         tr
-                            td= n++
-                            td Cortar cabelo
-                            td Devo cortar cabelo no salão perto de casa
+                            td= todo.id
+                            td= todo.title
+                            td= todo.description
                             td
-                                a.btn.btn-danger.btn-sm.text-white Apagar
-                                a.btn.btn-primary.btn-sm.btn-block.mt-1.text-white Ver
+                                a(class='btn btn-primary btn-sm btn-block mt-1 text-white', href='/todo/' + todo.id) Ver
+                                a.btn.btn-danger.btn-sm.btn-block.text-white Apagar
 
             .col-sm-6
                 .card
-                    .card-header.bg-primary.text-white  Nova tarefa
+                    .card-header.bg-primary.text-white.d-flex
+                        | Nova tarefa
+                        a(href='/todo/' class='text-white ml-auto') +Novo
                     .card-body
-                        form(action='/todo/save', method='POST')
-                            input(class='form-control', placeholder='Título da task', name='title')
-                            textarea(class='form-control mt-1', placeholder='Digite uma descrição', name='description')
-                            button(class='btn btn-success btn-sm mt-1', ) Enviar
-
+                        if todoEdit == null
+                            include partials/form-create
+                        else
+                            include partials/form-update
 

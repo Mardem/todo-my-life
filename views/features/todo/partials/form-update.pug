@@ -1,0 +1,4 @@
+form(action='/todo/save', method='POST')
+    input(class='form-control', placeholder='Título da task', name='title', value=todoEdit.title)
+    textarea(class='form-control mt-1', placeholder='Digite uma descrição', name='description')= todoEdit.description
+    button(class='btn btn-success btn-sm mt-1', ) Atualizar
